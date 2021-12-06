@@ -1,28 +1,30 @@
 <!-- put your html markup in the template tag -->
 <template>
-  <div class="custom-code-sample">
+  <div>
     <v-card>
       <v-card-text>
         <v-btn color="primary" @click="dialog = true">{{buttonText}}</v-btn>
       </v-card-text>
     </v-card>
-    <v-dialog v-model="dialog">
-      <v-card>
-      <v-card-text>
-        <v-icon class="close" @click="dialog = false">close</v-icon>
+    <div>
+      <v-dialog v-model="dialog" content-class="custom-iframe">
+        <v-card>
+        <v-card-text>
+          <v-icon class="close" @click="dialog = false">close</v-icon>
 
-        <v-progress-linear
-          v-if="loading"
-          indeterminate
-          color="primary">
-        </v-progress-linear>
+          <v-progress-linear
+            v-if="loading"
+            indeterminate
+            color="primary">
+          </v-progress-linear>
 
-        <iframe :src="iframeUrl"></iframe>
+          <iframe :src="iframeUrl"></iframe>
 
-      </v-card-text>
-          
-      </v-card>
-    </v-dialog>
+        </v-card-text>
+            
+        </v-card>
+      </v-dialog>
+    </div>
   </div>
 </template>
 
@@ -121,8 +123,12 @@
 <!-- put your styles in the style tag. -->
 <style>
 
+  .custom-iframe{
+    height: 100vh;
+    position: relative;
+  }
 
-  iframe{
+  .custom-iframe iframe{
     position: absolute;
     border: none;
     width: 100%;
@@ -132,24 +138,20 @@
     background-color: #fff;
   }
 
-  .close{
+  .custom-iframe .close{
     position: absolute !important;
     right:0px;
     top:0px;
     padding:10px;
   }
 
-  .v-dialog{
-    height: 100vh;
-    position: relative;
-  }
-
-  .v-dialog .v-card{
+  
+  .custom-iframe .v-card{
     height: 100%;
     padding:0
   }
 
-  .v-dialog .v-card__text{
+  .custom-iframe .v-card__text{
     height: 100%;
     padding:0 !important;
   }

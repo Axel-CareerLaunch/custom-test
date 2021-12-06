@@ -1,0 +1,18 @@
+{
+  "name": "conveyour-custom-content-examples",
+  "version": "1.0.0",
+  "description": "Examples of how to build custom content components using Vue files for use in ConveYour.com Lessons system",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ConveYour/conveyour-custom-content-examples.git"
+  },
+  "keywords": [
+    "conveyour"
+  ],
+  "author": "Stephen Rhyne",
+  "license": "ISC"
+}
