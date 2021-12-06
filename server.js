@@ -6,7 +6,7 @@ var port = 3001
 
 const readFile = path => {
   try {
-    fs.readFileSync(path)
+    return fs.readFileSync(path)
   } catch (error) {
     console.error(error)
     return ''
