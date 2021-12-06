@@ -3,10 +3,27 @@ var fs = require("fs");
 var url = require('url')
 var port = 3001
 
+
+const readFile = path => {
+  try {
+    fs.readFileSync(path)
+  } catch (error) {
+    console.error(error)
+    return ''
+  }
+}
  
 let options = {
-  key : fs.readFileSync('localhost-key.pem'),
-  cert : fs.readFileSync('localhost.pem'),
+  key: readFile('localhost-key.pem'),
+  cert: readFile('localhost.pem'),
+}
+
+if( !options.key || !options.cert ){
+  return console.log(`
+    No SSL cert or key provided!\r
+    To serve your custom content files via an https, URL you will need to generate an SSL cert and key.\r
+    We recommend using mkcert to do this.. https://github.com/FiloSottile/mkcert
+  `)
 }
 
 http.createServer(options, function(req, res) {
@@ -26,14 +43,7 @@ http.createServer(options, function(req, res) {
   let headers = {
     'Content-Type': `text/${mimetype}; charset=utf-8`,
     'Access-Control-Allow-Origin': '*'
-  }
-
-
-  console.log({
-    path,
-    headers
-  })
-  
+  }  
 
   if( !fs.existsSync(path) ){
     res.writeHead(404, headers)
