@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Custom Widget Iframe Test</title>
+    <style>
+      html,body{
+        background-color: whitesmoke;
+        margin:0;
+        padding:0;
+        min-height: 300vh;
+      }
+
+      .container{
+        margin:20px auto;
+        max-width: 600px;
+        padding:10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Custom Iframe Test</h1>
+      <p>This is a super simple example of how you can integrate an iframed web page with ConveYour.</p>
+
+      <button id="finish">Click Me</button>
+    </div>
+    <script>
+      (() =>{
+        const finish = document.querySelector('#finish')
+
+        const targetWindow = window.parent !== window ? window.parent : window
+          
+        finish.addEventListener('click', () => {
+          const data = { event : 'completed' }
+          targetWindow.postMessage(data, '*')
+        })
+
+        setTimeout( () => {
+          targetWindow.postMessage({ event: 'loaded' }, '*')
+        }, 1000)
+        
+      })()
+      
+    </script>
+  </body>
+</html>
