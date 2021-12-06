@@ -3,6 +3,22 @@
   <div>
     <v-card>
       <v-card-text>
+        
+        <div v-if="!ctx.taking" class="custom-iframe-instructions">
+          <h3>Instructions</h3>
+          <p><i>Note: These instructions will not show while taking the lesson.</i><p>
+          
+          <p>Under this item's dropdown, click on settings then add the following to metadata.</p>
+          
+          <img src="https://p194.p3.n0.cdn.getcloudapp.com/items/4guPBqN0/ef47206e-1cf5-42a8-8482-eee54b8cdc98.jpg?v=a2ded41027657389259820dc208f48e8"/>
+
+          <table>
+            <tr><th>iframe_url</th><td>Your webpage you want to embed</td></tr>
+            <tr><th>button_text</th><td>Customize the text of the button that opens the page.</td></tr>
+          </table>
+          
+        </div>
+
         <v-btn color="primary" @click="dialog = true">{{buttonText}}</v-btn>
       </v-card-text>
     </v-card>
@@ -101,6 +117,7 @@
         return this.ctx.learner
       },
       metadata(){
+        //metadata iframe_url and button_text are 
         return this.ctx.currentItem.values.metadata || {}
       },
       iframeUrl(){
@@ -122,6 +139,12 @@
 
 <!-- put your styles in the style tag. -->
 <style>
+
+  .custom-iframe-instructions{
+    padding:10px;
+    border:1px dashed #ccc;
+    margin-bottom:10px
+  }
 
   .custom-iframe{
     height: 100vh;
