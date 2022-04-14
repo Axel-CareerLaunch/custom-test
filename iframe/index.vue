@@ -29,7 +29,7 @@
           <v-icon class="close" @click="dialog = false">close</v-icon>
 
           <v-progress-linear
-            v-if="loading"
+            v-if="loading && showLoading"
             indeterminate
             color="primary">
           </v-progress-linear>
@@ -122,6 +122,9 @@
       },
       iframeUrl(){
         return this.metadata.iframe_url
+      },
+      showLoading(){
+        return this.metadata.show_loading !== 'no';
       },
       buttonText(){
         return this.metadata.button_text || 'View Page'
