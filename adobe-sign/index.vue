@@ -89,9 +89,9 @@
       },
 
       listenForEvents(){
+        // see events 
+        // https://opensource.adobe.com/acrobat-sign/developer_guide/events.html#user-action-events
          window.addEventListener('message', e => {
-
-          console.log({ formUrl : this.formUrl });
           
           if( !this.formUrl.includes(e.origin) ){
             return console.log('filtered window.message event', e)
@@ -105,8 +105,6 @@
               error
             }
           }
-
-          console.log({ data })
 
           if( data.type === 'PAGE_LOAD' ){
             return this.loading = false
@@ -130,15 +128,21 @@
         //metadata iframe_url and button_text are 
         return this.ctx.currentItem.values.metadata || {}
       },
+      //turn the string contact fields passed in metadata into an array of keys
       contactFields() {
         return (this.metadata.contact_fields || '').split(',').map( field => field.trim() )
       },
+      
+      //get form URL from metadata
       formUrl(){
-        let url = this.metadata.form_url
+        let url = this.metadata.form_url || ''
         const fields = this.contactFields
         if( !fields.length ){
           return url
         }
+
+        //generate a key=value list of params to pass to url #fragment. 
+        
         const params = new URLSearchParams
         const learner = this.learner;
         fields.forEach( field => {
@@ -154,8 +158,8 @@
         }
         
         return url
-        
       },
+      //option to not use the loading bar. Adobe event handles this for us.
       showLoading(){
         return this.metadata.show_loading !== 'no';
       },
