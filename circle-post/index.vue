@@ -13,7 +13,7 @@
           <img src="https://p194.p3.n0.cdn.getcloudapp.com/items/GGuzqPQX/39e0574d-6192-4d66-aa4d-c509de9c0051.jpg?v=e353157bbb5576de59f997213236da1e"/>
 
           <table>
-            <tr><th>circle_domain</th><td>The subdomain you use for example.circle.so.</td></tr>
+            <tr><th>circle_domain</th><td>The full domain (without https://) where your circo.so is hosted.</td></tr>
             <tr><th>circle_space</th><td>The slug of the circle space the post resides in.</td></tr>
             <tr><th>circle_post</th><td>The slug of the circle post</td></tr>
           </table>
@@ -23,7 +23,12 @@
       </v-card-text>
     </v-card>
     <div v-if="circleUrl">
-      <iframe :style="frameStyles" style="max-width:800px;border:0;box-shadow:none;outline:0;" :src="circleUrl" scrolling="no" width="100%"></iframe>
+      <iframe 
+        ref="iframe" 
+        :style="frameStyles" 
+        style="border:0;box-shadow:none;outline:0;" 
+        :src="circleUrl" scrolling="no" width="100%">
+      </iframe>
     </div>
   </div>
 </template>
@@ -50,9 +55,9 @@
     //return here can be used in your templates like this Hi {{fullName}}
     data(){
       return {
-        loading: true,
+        ready: false,
         frameStyles: {
-          height: '30vh'
+          height: '200vh'
         }
       }
     },
@@ -78,19 +83,20 @@
       listenForEvents(){
         
          window.addEventListener('message', e => {
-          
+
+          console.log(e.data);
+
           if( this.circleUrl.indexOf(e.origin) === -1 ){
             return false;
             // return console.log('filtered window.message event', e)
           }
 
-          console.log(e.data)
-
-          if( Array.isArray(e.data) && e.data[1] ){
-            this.frameStyles.height = e.data[1] + 'px'
+          if( Array.isArray(e.data) && e.data[0] === 'setHeight' && e.data[1] ){
+            this.frameStyles.height = e.data[1] + 'px';
           }          
           
         })
+        
       },
 
     },
@@ -121,9 +127,7 @@
           return ''
         }
 
-        console.log('got here');
-
-        return `https://${domain}.circle.so/c/${space}/${post}?iframe=true&?post=true`
+        return `https://${domain}/c/${space}/${post}?iframe=true&post=true`
       },
 
     },
@@ -132,6 +136,9 @@
     mounted(){
       this.$emit('loaded')
       this.listenForEvents()
+      setTimeout(() => {
+        this.ready = true;
+      }, 100)
     },
 
   }
