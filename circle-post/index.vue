@@ -84,8 +84,6 @@
         
          window.addEventListener('message', e => {
 
-          console.log(e.data);
-
           if( this.circleUrl.indexOf(e.origin) === -1 ){
             return false;
             // return console.log('filtered window.message event', e)

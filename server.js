@@ -26,7 +26,28 @@ if( !options.key || !options.cert ){
   `)
 }
 
+const watchPath = (req, res, path) => {
+
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Access-Control-Allow-Origin': '*',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive'
+  });
+
+  fs.watchFile(path, { interval : 300 }, (data) => {
+    console.log('file changed', { path })
+
+    res.write(`event: fileChanged\ndata: ${path}\n\n`);
+    
+  });
+
+  res.write(`event: watchingFile\ndata:\n\n`);
+  
+}
+
 http.createServer(options, function(req, res) {
+
 
   let _url = url.parse( req.url )
 
@@ -51,13 +72,16 @@ http.createServer(options, function(req, res) {
     return res.end()
   }
 
-
+  if ( (_url.query || '').includes('watch=true') ) {
+    return watchPath(req, res, path);
+  }
   
   fs.readFile(path, function(err, data){
     res.writeHead(200, headers);
     res.write(data);
     res.end();
   });
+
 
 }).listen(port);
 
