@@ -36,3 +36,11 @@ Serving your Custom Content "widgets" via https ensures that CORS will work corr
 ### Start the Server
 
 `npm run server`
+
+### Live Reload with the Dev Server!
+
+The dev server now supports livereload! Change your source code and see the changes immediately in your custom content format. To enable live reload on your custom content file URL, just add ?watch=true to your file. Here's an example.. 
+
+```
+https://localhost:3001/iframe?watch=true
+```
