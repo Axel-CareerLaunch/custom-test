@@ -1,24 +1,16 @@
 <!-- put your html markup in the template tag -->
 <template>
   <div class="custom-code-sample">
-    
+    <h1>Name: {{ fullName }}</h1>
+    <h1>Overall Score: {{ overallScore1 }}</h1>
   </div>
 </template>
 
 <!-- put your styles in the style tag. -->
 <style scoped>
-  .app-header {
-    display: none !important;
-  }
-
-  .take-lesson__controls {
-    display: none !important;
-  }
-  
-  .custom-code-sample {
+  .custom-code-sample p, .custom-code-sample ul{
     font-size: 16px;
   }
-  
 </style>
 
 <!-- put your javascript / vue.js logic into your script tag -->
@@ -29,7 +21,7 @@
   module.exports = {
     
     //give your custom code component a unique name, no spaces, camelCase
-    name : 'clraReporting',
+    name : 'CustomCodeSample',
 
     //props are properties passed from the parent lesson context
     //into your component. Please always include this line
@@ -43,45 +35,31 @@
     //return here can be used in your templates like this Hi {{fullName}}
     data(){
       return {
+        ctxHidden : true,
+
         fullName : [ 
           this.ctx.learner.first_name, 
-          this.ctx.learner.first_name 
+          this.ctx.learner.last_name
         ].join(' '),
-        careerSelfDevelopment1 : [
-          this.ctx.learner.career_self_development_1st
-        ],
 
-        communication1 : [
-          this.ctx.learner.communication_1st
-        ],
+        careerSelfDevelopment1 : [this.ctx.learner.career_self_development_1st],
+  
+        communication1 : [this.ctx.learner.communication_1st],
+  
+        criticalThinking1 : [this.ctx.learner.critical_thinking_1st],
+  
+        equityInclusion1 : [this.ctx.learner.equity_inclusion_1st],
 
-        criticalThinking1 : [
-          this.ctx.learner.critical_thinking_1st
-        ],
+        leadership1 : [this.ctx.learner.leadership_1st],
 
-        equityInclusion1 : [
-          this.ctx.learner.equity_inclusion_1st
-        ],
-
-        leadership1 : [
-          this.ctx.learner.leadership_1st
-        ],
-
-        professionalism1 : [
-          this.ctx.learner.professionalism_1st
-        ],
-
-        teamwork1 : [
-          this.ctx.learner.teamwork_1st
-        ],
-
-        technology1 : [
-          this.ctx.learner.technology_1st
-        ],
-
-        overallScore1 : [
-          this.ctx.learner.overall_score_1st
-        ]
+        professionalism1 : [this.ctx.learner.professionalism_1st],
+  
+        teamwork1 : [this.ctx.learner.teamwork_1st],
+  
+        technology1 : [this.ctx.learner.technology_1st],
+        
+        overallScore1 : [this.ctx.learner.overall_score_1st]
+        }
       }
     },
 
@@ -103,7 +81,11 @@
       }
     },
 
-    
+    computed: {
+      learner(){
+        return this.ctx.learner
+      }
+    },
 
     //DO NOT REMOVE. This emits to the parent lesson that your custom code is fully loaded
     mounted(){
