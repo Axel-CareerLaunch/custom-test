@@ -57,18 +57,18 @@
 </template>
 
 <!-- put your styles in the style tag. -->
-<style>
+<style scoped>
   .custom-code-sample p, .custom-code-sample ul{
     font-size: 16px;
   }
 
-  .app-header {
+  /* .app-header {
     display: none !important;
   }
 
   .take-lesson__controls {
     display: none !important;
-  }
+  } */
   
 </style>
 
