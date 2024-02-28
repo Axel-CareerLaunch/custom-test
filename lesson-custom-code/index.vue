@@ -6,7 +6,7 @@
 </template>
 
 <!-- put your styles in the style tag. -->
-<style>
+<style scoped>
   .app-header {
     display: none !important;
   }
