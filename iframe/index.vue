@@ -6,7 +6,7 @@
         
         <div v-if="!ctx.taking" class="custom-iframe-instructions">
           <h3>Instructions</h3>
-          <p><i>Note: These instructions will not show while taking the lesson.</i><p>
+          <p><i>Note: These instructions will not show while taking the lesson.</i></p>
           
           <p>Under this item's dropdown, click on settings then add the following to metadata.</p>
           
@@ -142,6 +142,14 @@
 
 <!-- put your styles in the style tag. -->
 <style>
+
+  .app-header {
+    display: none !important;
+  }
+
+  .take-lesson__controls {
+    display: none !important;
+  }
 
   .custom-iframe-instructions{
     padding:10px;
