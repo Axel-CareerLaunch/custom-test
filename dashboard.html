@@ -1,0 +1,98 @@
+<!-- Centered block for the dropdown list -->
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+    <select id="sourceSelector" onchange="changeSources()">
+      <option value="set1">All Students</option>
+      <option value="set2">First Generation Students</option>
+      <!-- Add more options as needed -->
+    </select>
+  </div>
+  
+  <!-- Centered block for the iframes -->
+  <div style="display: flex; justify-content: center;">
+    <iframe id="iframe1" src="https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/f9604678-a406-463b-8b67-1b368f9ce18c/charts" width="90%" height="800" style="margin-right: 5px;"></iframe>
+    <iframe id="iframe2" src="https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/4b9fce9c-5254-4229-b1d7-8f178b1104ba/charts" width="90%" height="800"></iframe>
+  </div>
+  
+  <script>
+    // Function to change sources based on the selected option
+    function changeSources() {
+      var sourceSelector = document.getElementById("sourceSelector");
+      var iframe1 = document.getElementById("iframe1");
+      var iframe2 = document.getElementById("iframe2");
+  
+      // Get the selected option value
+      var selectedOption = sourceSelector.value;
+  
+      // Set the source links based on the selected option
+      switch (selectedOption) {
+        case "set1":
+          iframe1.src = "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/f9604678-a406-463b-8b67-1b368f9ce18c/charts";
+          iframe2.src = "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/4b9fce9c-5254-4229-b1d7-8f178b1104ba/charts";
+          break;
+        case "set2":
+          iframe1.src = "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/23e6b59f-76a5-42da-b07a-190bba69d278/charts";
+          iframe2.src = "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/17475298-8da8-4f57-acd0-6a8aa0bba2a2/charts";
+          break;
+        // Add more cases for additional options if needed
+        default:
+          // Set default sources
+          iframe1.src = "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/f9604678-a406-463b-8b67-1b368f9ce18c/charts";
+          iframe2.src = "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/4b9fce9c-5254-4229-b1d7-8f178b1104ba/charts";
+          break;
+      }
+    }
+  
+    // Initial call to set the initial sources
+    changeSources();
+  </script>
+  
+
+//V2
+
+<!-- Centered block for the dropdown list -->
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+    <select id="sourceSelector" onchange="changeSources()">
+      <option value="set1">All Students</option>
+      <option value="set2">First Generation Students</option>
+      <!-- Add more options as needed -->
+    </select>
+  </div>
+  
+  <!-- Centered block for the iframes with added space -->
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <iframe id="iframe1" src="" width="90%" height="800" style="margin-bottom: 10px;"></iframe>
+    <iframe id="iframe2" src="" width="90%" height="800"></iframe>
+  </div>
+  
+  <script>
+    // Function to change sources based on the selected option
+    function changeSources() {
+      var sourceSelector = document.getElementById("sourceSelector");
+      var iframe1 = document.getElementById("iframe1");
+      var iframe2 = document.getElementById("iframe2");
+  
+      // Get the selected option value
+      var selectedOption = sourceSelector.value;
+  
+      // Map options to corresponding URLs
+      var sourceUrls = {
+        set1: [
+          "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/f9604678-a406-463b-8b67-1b368f9ce18c/charts",
+          "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/4b9fce9c-5254-4229-b1d7-8f178b1104ba/charts"
+        ],
+        set2: [
+          "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/23e6b59f-76a5-42da-b07a-190bba69d278/charts",
+          "https://app.careerlaunchassessment.com/public/survey/8ee91a27-950a-499a-bb9f-e03752675a0e/dashboards/17475298-8da8-4f57-acd0-6a8aa0bba2a2/charts"
+        ]
+        // Add more cases for additional options if needed
+      };
+  
+      // Set the source links based on the selected option
+      iframe1.src = sourceUrls[selectedOption][0] || "";
+      iframe2.src = sourceUrls[selectedOption][1] || "";
+    }
+  
+    // Initial call to set the initial sources
+    changeSources();
+  </script>
+  

@@ -1,13 +1,13 @@
 <!-- put your html markup in the template tag -->
 <template>
-    <div class="custom-code-sample">
+    <div>
         <h1>Name: {{ fullName }}</h1>
         <h2>Overall Score: {{ overallScore1 }}</h2>
     </div>
   </template>
   
   <!-- put your styles in the style tag. -->
-  <style scoped>
+  <style>
     .app-header {
       display: none !important;
     }
@@ -19,7 +19,11 @@
     .custom-code-sample {
       font-size: 16px;
     }
-    
+
+    .background-color {
+        color: azure;
+    }
+
   </style>
   
   <!-- put your javascript / vue.js logic into your script tag -->
@@ -48,42 +52,25 @@
             this.ctx.learner.first_name, 
             this.ctx.learner.last_name
           ].join(' '),
+
+          careerSelfDevelopment1 : [this.ctx.learner.career_self_development_1st],
+
+          communication1 : [this.ctx.learner.communication_1st],
+
+          criticalThinking1 : [this.ctx.learner.critical_thinking_1st],
           
-          careerSelfDevelopment1 : [
-            this.ctx.learner.career_self_development_1st
-          ],
-  
-          communication1 : [
-            this.ctx.learner.communication_1st
-          ],
-  
-          criticalThinking1 : [
-            this.ctx.learner.critical_thinking_1st
-          ],
-  
-          equityInclusion1 : [
-            this.ctx.learner.equity_inclusion_1st
-          ],
-  
-          leadership1 : [
-            this.ctx.learner.leadership_1st
-          ],
-  
-          professionalism1 : [
-            this.ctx.learner.professionalism_1st
-          ],
-  
-          teamwork1 : [
-            this.ctx.learner.teamwork_1st
-          ],
-  
-          technology1 : [
-            this.ctx.learner.technology_1st
-          ],
-  
-          overallScore1 : [
-            this.ctx.learner.overall_score_1st
-          ]
+          equityInclusion1 : [this.ctx.learner.equity_inclusion_1st],
+          
+          leadership1 : [this.ctx.learner.leadership_1st],
+          
+          professionalism1 : [this.ctx.learner.professionalism_1st],
+          
+          teamwork1 : [this.ctx.learner.teamwork_1st],
+          
+          technology1 : [this.ctx.learner.technology_1st],
+          
+          overallScore1 : [this.ctx.learner.overall_score_1st]
+          
         }
       },
   

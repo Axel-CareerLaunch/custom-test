@@ -35,7 +35,6 @@
     //return here can be used in your templates like this Hi {{fullName}}
     data(){
       return {
-        ctxHidden : true,
 
         fullName : [ 
           this.ctx.learner.first_name, 
@@ -76,9 +75,6 @@
       //interacting with this code has completed the interaction. By giving you
       //the power to signal when the learner is completed you can control the learner's
       //ability to progress through the rest of the lesson!
-      complete(){
-        this.$emit('completed')
-      }
     },
 
     computed: {
