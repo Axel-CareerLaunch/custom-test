@@ -1,0 +1,96 @@
+<!-- Block 1: Dropdown List -->
+<div style="text-align: center; margin-top: 10px; margin-bottom: -10px; position: relative; bottom: 0;">
+    <label for="sourceSelector" style="font-size: 18px;">Select Course:</label>
+    <br>
+    <select id="sourceSelector" onchange="changeSources()" style="padding: 8px; font-size: 16px; border-radius: 5px;">
+        <option value="set1">All Students</option>
+        <option value="set2">AMPD 3071</option>
+        <option value="set3">ANSC 4933</option>
+        <option value="set4">ARSC 140V</option>
+        <option value="set5">EXSC 2733 - Section 1</option>
+        <option value="set6">EXSC 2733 - Section 2</option>
+        <option value="set7">PBHL 3041</option>
+        <option value="set8">SEVI 2053 - 006</option>
+        <option value="set9">SEVI 2053 - 013</option>
+      
+        <!-- Add more options as needed -->
+    </select>
+  </div>
+  
+  <!-- Block 2: Headers in 2 Columns -->
+  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+    <div style="flex: 1; text-align: center; color: #000033;">
+        <span style="font-size: 30px; font-weight: bold;">Pre-Experience</span>
+    </div>
+    <div style="flex: 1; text-align: center; color: #000033;">
+        <span style="font-size: 30px; font-weight: bold;">Post-Experience</span>
+    </div>
+  </div>
+  
+  <!-- Block 3: Iframes -->
+  <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+    <iframe id="iframe1" src="https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/a6062ca6-afe2-40f7-8d13-361f4ea65712/charts" width="100%" height="800" style="margin-right: 30px;" loading="lazy"></iframe>
+    <iframe id="iframe2" src="https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/9f63fb2a-2798-4b17-adc3-39bb15e6e57a/charts" width="100%" height="800" loading="lazy"></iframe>
+  </div>
+  
+  <script>
+    // Function to change sources based on the selected option
+    function changeSources() {
+        var sourceSelector = document.getElementById("sourceSelector");
+        var iframe1 = document.getElementById("iframe1");
+        var iframe2 = document.getElementById("iframe2");
+  
+        // Get the selected option value
+        var selectedOption = sourceSelector.value;
+  
+        // Set the source links based on the selected option
+        switch (selectedOption) {
+            case "set1":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/a6062ca6-afe2-40f7-8d13-361f4ea65712/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/9f63fb2a-2798-4b17-adc3-39bb15e6e57a/charts";
+                break;
+            case "set2":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/d0e69632-504c-4786-996c-de2737d4bab0/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/13d46280-9bad-4daf-a093-62e84eb305c3/charts";
+                break;
+            case "set3":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/16c3736f-bdf4-4453-a3a0-8e804057402e/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/b2804954-6bbc-4ce3-85e7-a65bf3c270e4/charts";
+                break;
+            case "set4":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/559623a1-729a-4037-aa5f-600e951c98f2/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/94a88752-6fb9-4eff-8d7b-85b78f3be5be/charts";
+                break;
+            case "set5":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/068bb675-79c3-4563-997d-c9746486238b/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/53f1c634-5e68-4341-baed-3837b4f500cf/charts";
+                break;
+            case "set6":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/357e24fa-e852-44e2-9114-6ac53972cf26/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/b2588b00-d94d-4d9b-b11a-9c0293844f00/charts";
+                break;
+            case "set7":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/415a21ce-dad9-40ac-83cc-5e487ce8853f/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/6737c5d1-e266-4f67-9e0b-eaa94ef8a874/charts";
+                break;
+            case "set8":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/138dfcd7-a304-4d12-a000-ac38ab5e7a0c/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/7146c95c-a605-490f-8b65-10f0d431d8c0/charts";
+                break;
+            case "set9":
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/f59e20b4-5209-422b-acb6-d31348b56ef7/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/bc5e97f3-badb-4258-b8d4-42eff22016c0/charts";
+                break;
+            // Add more cases for additional options if needed
+            default:
+                // Set default sources
+                iframe1.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/a6062ca6-afe2-40f7-8d13-361f4ea65712/charts";
+                iframe2.src = "https://app.careerlaunchassessment.com/public/survey/6b40c5df-9784-4fe3-ba6d-38d1f44425ec/dashboards/9f63fb2a-2798-4b17-adc3-39bb15e6e57a/charts";
+                break;
+        }
+    }
+  
+    // Initial call to set the initial sources
+    changeSources();
+  </script>
+  
